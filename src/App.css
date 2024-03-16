@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+.team-divider {
+  margin: 20px 0;
+  border: 1px solid #ccc;
+}
+
+.team {
+  margin-bottom: 20px;
+}

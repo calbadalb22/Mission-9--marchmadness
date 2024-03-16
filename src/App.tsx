@@ -4,31 +4,10 @@ import data from './CollegeBasketballTeams.json';
 
 interface TeamProps {
   name: string;
-  mascot: string;
-  location: string;
+  school: string;
+  city: string;
+  state: string;
 }
-const teamNames = [
-  {
-    name: 'BYU',
-    mascot: 'Cougar',
-    location: 'Provo, Utah',
-  },
-  {
-    name: 'UCLA',
-    mascot: 'Bruin',
-    location: 'Los Angeles',
-  },
-  {
-    name: 'Texas',
-    mascot: 'Longhorns',
-    location: 'Austin, Texas',
-  },
-  {
-    name: 'UVU',
-    mascot: 'Wolverine',
-    location: 'Orem, Utah',
-  },
-];
 
 function Title() {
   return <h1>March Madness</h1>;
@@ -42,30 +21,35 @@ function Welcome() {
     </h3>
   );
 }
-class Team extends React.Component<TeamProps> {
-  render() {
-    const oneTeam = this.props;
 
-    return (
-      <div>
-        <img />
-        <h2>{oneTeam.name}</h2>
-        <h3>Mascot: {oneTeam.mascot}</h3>
-        <h3>Location: {oneTeam.location}</h3>
-      </div>
-    );
-  }
+function Team(props: TeamProps) {
+  return (
+    <div className="team">
+      <h2>{props.school}</h2>
+      <h3>Mascot: {props.name}</h3>
+      <h3>
+        Location: {props.city}, {props.state}
+      </h3>
+    </div>
+  );
 }
 
 function CollegeList() {
   return (
     <div>
-      {teamNames.map((teamNum) => (
-        <Team {...teamNum} />
+      {data.teams.map((team: TeamProps, index: number) => (
+        <React.Fragment key={team.name}>
+          <Team {...team} />
+          {index !== data.teams.length - 1 && (
+            <hr className="team-divider" />
+          )}{' '}
+          {}
+        </React.Fragment>
       ))}
     </div>
   );
 }
+
 function App() {
   return (
     <div className="App">
